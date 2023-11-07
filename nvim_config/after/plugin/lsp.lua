@@ -17,7 +17,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'dockerls', 'gopls', 'lua_ls', 'vimls', 'ruff_lsp', 'sqlls', 'rust_analyzer'},
+  ensure_installed = {'dockerls', 'lua_ls', 'vimls', 'ruff_lsp', 'sqlls', 'rust_analyzer'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
