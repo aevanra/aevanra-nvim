@@ -6,6 +6,8 @@ vim.keymap.set("n", "<leader>w", vim.cmd.w)
 vim.keymap.set("n", "<leader>wf", "<cmd>w!<cr>")
 vim.keymap.set("n", "<leader>q", vim.cmd.q)
 vim.keymap.set("n", "<leader>qf", "<cmd>q!<cr>")
+vim.keymap.set("n", "<leader>qa", "<cmd>qall<cr>")
+vim.keymap.set("n", "<leader>qaf", "<cmd>qall!<cr>")
 vim.keymap.set("n", "<leader>wq", vim.cmd.wq)
 vim.keymap.set("n", "<leader>wqf", "<cmd>wq!<cr>")
 
@@ -43,4 +45,5 @@ vim.keymap.set('n', '<leader>h', '<C-w>h')
 vim.keymap.set('n', '<leader>j', '<C-w>j')
 vim.keymap.set('n', '<leader>k', '<C-w>k')
 
-
+--LSP Refresh
+vim.keymap.set('n', '<leader>lsp', ':LspRestart<CR>')

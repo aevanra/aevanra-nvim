@@ -7,3 +7,6 @@ require("toggleterm").setup{
     start_in_insert = true,
 }
 require("command-completion").setup()
+require("mini.pairs").setup()
+require("mini.surround").setup()
+require("mini.comment").setup()
