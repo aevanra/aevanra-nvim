@@ -31,3 +31,4 @@ vim.opt.colorcolumn = "124"
 vim.g.mapleader = " "
 vim.opt.clipboard:append("unnamedplus")
 
+vim.cmd[[colorscheme tokyonight-night]]

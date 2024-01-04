@@ -1,4 +1,5 @@
 require("aevan/remap")
+-- require("aevan/remap-cmdh")
 require("aevan/set")
 
 require("toggleterm").setup{

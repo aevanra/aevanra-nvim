@@ -69,7 +69,15 @@ use {
 }
 
 -- Debugging
-use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+use { "mfussenegger/nvim-dap" }
+use { "leoluz/nvim-dap-go" ,
+        ft="go",
+        dependencies = "mfussenegger/nvim-dap",
+        config = function(_, opts)
+            require("dap-go").setup(opts)
+        end
+  }
+
 
 -- Tab Handling
 use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
@@ -98,5 +106,17 @@ use {
 }
 
 use {"mrquantumcodes/retrospect.nvim"}
+
+use {"xiyaowong/transparent.nvim"}
+
+-- noice
+use {"folke/noice.nvim",
+    requires = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+    },
+}
+
+use {"folke/tokyonight.nvim"}
 
 end)
