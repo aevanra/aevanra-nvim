@@ -15,6 +15,8 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {'dockerls', 'lua_ls', 'vimls', 'ruff_lsp', 'sqlls', 'rust_analyzer'},
@@ -24,6 +26,7 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    capabilities = capabilities,
     --ruff_lsp = function()
 	--    require("lspconfig").ruff_lsp.setup{
     --    settings = {
@@ -35,18 +38,30 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
-  sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp'},
-    {name = 'nvim_lua'},
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
   },
+  sources = cmp.config.sources({
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+    },{
+    {name = 'buffer'},
+  }),
+  capabilities = capabilities,
   formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-o>'] = cmp.mapping.complete(),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
 })

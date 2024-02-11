@@ -10,8 +10,14 @@ return require('packer').startup(function(use)
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { {'nvim-lua/plenary.nvim'},
+        {"BurntSushi/ripgrep"}
+    }
+
   }
+
+  --Code Snippets
+  use('L3MON4D3/LuaSnip')
 
   --Treesitter installs
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -24,6 +30,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
 
   --Fugivite
+  use('lewis6991/gitsigns.nvim')
   use('tpope/vim-fugitive')
 
   --Vim Command Completion
@@ -44,6 +51,8 @@ return require('packer').startup(function(use)
       {'hrsh7th/nvim-cmp'},
       {'hrsh7th/cmp-nvim-lsp'},
       {'L3MON4D3/LuaSnip'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'rafamadriz/friendly-snippets'}
   }
 }
 
@@ -118,5 +127,8 @@ use {"folke/noice.nvim",
 }
 
 use {"folke/tokyonight.nvim"}
+
+
+
 
 end)
