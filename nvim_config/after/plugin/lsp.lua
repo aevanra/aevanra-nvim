@@ -19,7 +19,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'dockerls', 'lua_ls', 'vimls', 'ruff_lsp', 'sqlls', 'rust_analyzer'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()

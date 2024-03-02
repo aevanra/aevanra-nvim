@@ -4,46 +4,48 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
-	  -- or                            , branch = '0.1.x',
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.4',
+      -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'},
         {"BurntSushi/ripgrep"}
     }
 
-  }
+    }
 
-  --Code Snippets
-  use('L3MON4D3/LuaSnip')
+    --Code Snippets
+    use('L3MON4D3/LuaSnip')
 
-  --Treesitter installs
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
+    --Treesitter installs
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/playground')
 
-  --Harpoon
-  use('theprimeagen/harpoon')
+    --Harpoon
+    use {
+        "ThePrimeagen/harpoon",
+    }
 
-  --UndoTree
-  use('mbbill/undotree')
+    --UndoTree
+    use('mbbill/undotree')
 
-  --Fugivite
-  use('lewis6991/gitsigns.nvim')
-  use('tpope/vim-fugitive')
+    --Fugivite
+    use('lewis6991/gitsigns.nvim')
+    use('tpope/vim-fugitive')
 
-  --Vim Command Completion
-  use('smolck/command-completion.nvim')
+    --Vim Command Completion
+    use('smolck/command-completion.nvim')
 
-  --LSP Zero
-  use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  requires = {
-	  --- Uncomment these if you want to manage LSP servers from neovim
-	  {'williamboman/mason.nvim'},
-	  {'williamboman/mason-lspconfig.nvim'},
+    --LSP Zero
+    use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
+      --- Uncomment these if you want to manage LSP servers from neovim
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
 
       -- LSP Support
       {'neovim/nvim-lspconfig'},
@@ -53,20 +55,15 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},
       {'saadparwaiz1/cmp_luasnip'},
       {'rafamadriz/friendly-snippets'}
-  }
-}
+    }
+    }
 
-  use('github/copilot.vim')
+    use('github/copilot.vim')
 
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-      require("toggleterm").setup{
-      }
-  end}
-
---which key
-use {
-  "folke/which-key.nvim",
-  config = function()
+    --which key
+    use {
+    "folke/which-key.nvim",
+    config = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
     require("which-key").setup {
@@ -74,61 +71,58 @@ use {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
-  end
-}
+    end
+    }
 
--- Debugging
-use { "mfussenegger/nvim-dap" }
-use { "leoluz/nvim-dap-go" ,
+    -- Debugging
+    use { "mfussenegger/nvim-dap" }
+    use { "leoluz/nvim-dap-go" ,
         ft="go",
         dependencies = "mfussenegger/nvim-dap",
         config = function(_, opts)
             require("dap-go").setup(opts)
         end
-  }
+    }
 
 
--- Tab Handling
-use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
-use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
-use 'romgrk/barbar.nvim'
+    -- Tab Handling
+    use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
+    use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+    use 'romgrk/barbar.nvim'
 
--- mini libraries
-use { 'echasnovski/mini.comment', branch = 'stable' }
-use { 'echasnovski/mini.pairs', branch = 'stable' }
-use { 'echasnovski/mini.surround', branch = 'stable' }
+    -- mini libraries
+    use { 'echasnovski/mini.comment', branch = 'stable' }
+    use { 'echasnovski/mini.pairs', branch = 'stable' }
+    use { 'echasnovski/mini.surround', branch = 'stable' }
 
--- LuaLine
-use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+    -- LuaLine
+    use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
--- DBT Tool
-use {
+    -- DBT Tool
+    use {
     "cfmeyers/dbt.nvim",
     requires = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
         "rcarriga/nvim-notify",
     },
-}
+    }
 
-use {"mrquantumcodes/retrospect.nvim"}
+    use {"mrquantumcodes/retrospect.nvim"}
 
-use {"xiyaowong/transparent.nvim"}
+    use {"xiyaowong/transparent.nvim"}
 
--- noice
-use {"folke/noice.nvim",
+    -- noice
+    use {"folke/noice.nvim",
     requires = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
     },
-}
+    }
 
-use {"folke/tokyonight.nvim"}
-
-
-
+    use {"folke/tokyonight.nvim"}
 
 end)

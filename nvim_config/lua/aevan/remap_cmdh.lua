@@ -9,9 +9,6 @@ vim.keymap.set("n", "<leader>qaf", "<cmd>qall!<cr>")
 vim.keymap.set("n", "<leader>wq", vim.cmd.wq)
 vim.keymap.set("n", "<leader>wqf", "<cmd>wq!<cr>")
 
--- Toggle Term
-vim.keymap.set("n", "<leader>/", "<cmd>ToggleTerm<cr>")
-
 -- Python formatting
 vim.keymap.set("n", "<leader>rf", "<cmd>!ruff check --fix %:p <cr>")
 vim.keymap.set("n", "<leader>fmt", "<cmd>!black %:p <cr>")
@@ -25,8 +22,9 @@ vim.keymap.set("n", "<leader>gp", "<cmd>!git push origin<cr>")
 --Find and replace under cursor
 vim.keymap.set("n", "<leader>fr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
--- Close Buffer
+-- Buffer Management
 vim.keymap.set('n', '<leader>bc', ":bd<CR>")
+vim.keymap.set('n', '<leader>ca', ":%bd|e#|bd#<CR>")
 
 -- Copilot Toggle
 vim.keymap.set('n', '<leader>cpe', ":Copilot enable<CR>")
@@ -67,3 +65,4 @@ vim.keymap.set("n", "<leader>a", mark.add_file)
 vim.keymap.set("n", "<leader>f", ui.toggle_quick_menu)
 vim.keymap.set("n", "<leader>j", function() ui.nav_next() end)
 vim.keymap.set("n", "<leader>b", function() ui.nav_prev() end)
+
